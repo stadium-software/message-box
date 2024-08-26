@@ -98,7 +98,7 @@ When a button is clicked, the popup closes and the custom event handler script b
 1. Add a script under the page called "MessageBoxClickEventHandler"
 2. Add the input parameters below to the script
    1. Result
-3. Use a *Decision* into the "MessageBoxClickEventHandler" and use the "Result" input parameter to check which button was clicked
+3. Drag a *Decision* into the "MessageBoxClickEventHandler" and use the "Result" input parameter to check which button was clicked
 
 ## CSS
 The CSS below is required for the correct functioning of the module. Some elements can be [customised](#customising-css) using a variables CSS file. 

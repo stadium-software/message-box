@@ -1,0 +1,29 @@
+:root {
+    --messagebox-background-background-color: rgba(0, 0, 0, 0.5);
+    --messagebox-border-radius: 6px;
+
+    --messagebox-header-background-color: #e1e1e1;
+    --messagebox-header-topbottom-padding: 4px;
+    --messagebox-header-rightleft-padding: 6px;
+
+    --messagebox-content-background-color: #ffffff;
+    --messagebox-content-border-color: #eee;
+    --messagebox-content-shadow-color: rgba(0, 0, 0, 0.45);
+    --messagebox-content-alignment: start; /*start or center*/
+    --messagebox-content-pixels-from-top: 40px;
+    /*This will only work if the --messagebox-content-alignment variable is set to 'start'*/
+
+    --messagebox-content-top-padding: 6px;
+    --messagebox-content-right-padding: 12px;
+    --messagebox-content-bottom-padding: 6px;
+    --messagebox-content-left-padding: 12px;
+
+    --messagebox-button-box-top-margin: 0;
+    --messagebox-button-box-bottom-padding: 12px;
+
+    --messagebox-button-topbottom-padding: 4px;
+    --messagebox-button-rightleft-padding: 6px;
+
+    --messagebox-secondary-button-font-color: rgba(51, 153, 255, 1);
+    --messagebox-secondary-button-hover-background-color: #e1e1e1;
+}

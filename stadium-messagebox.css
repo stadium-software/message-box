@@ -1,0 +1,48 @@
+.stadium-messagebox {
+    display: grid;
+    place-items: center;
+    .overlay {
+        position: fixed;
+        display: grid;
+        justify-items: center;
+        align-items: var(--messagebox-content-alignment, start);
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: var(--messagebox-background-background-color, var(--MODAL-OVERLAY-COLOR));
+        z-index: 1000;
+    }
+    .message-box {
+        position: fixed;
+        display: inline-block;
+        margin-top: var(--messagebox-content-pixels-from-top, 60px);
+        background-color: var(--messagebox-content-background-color, #ffffff);
+        border-radius: var(--messagebox-border-radius, 6px);
+        border: 1px solid var(--messagebox-content-border-color, var(--GENERAL-BORDER-COLOR));
+        box-shadow: var(--messagebox-content-shadow-color, var(--BOX-SHADOW-COLOR)) 0px 5px 15px;
+        overflow: auto;
+        max-height: calc(96vh - var(--messagebox-content-pixels-from-top, 0));
+        max-width: 96vw;
+        z-index: 1001;
+    }
+    .message-box-header {
+        padding: var(--messagebox-header-topbottom-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING)) var(--messagebox-header-rightleft-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING)) var(--messagebox-header-topbottom-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING)) var(--messagebox-header-rightleft-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING));
+        background-color: var(--messagebox-header-background-color, var(--MODAL-HEADER-BORDER-COLOR));
+    }
+    .content-box {
+        padding: var(--messagebox-content-top-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING)) var(--messagebox-content-right-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING)) var(--messagebox-content-bottom-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING)) var(--messagebox-content-left-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING));
+    }
+    .button-box {
+        display: flex;
+        gap: 6px;
+        margin-top: var(--messagebox-button-box-top-margin, var(--CONTROL-CONTAINER-TOP-MARGIN));
+        padding: var(--messagebox-button-box-bottom-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING)) var(--messagebox-content-right-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING)) var(--messagebox-button-box-bottom-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING)) var(--messagebox-content-left-padding, var(--BODY-CONTAINER-RIGHTLEFT-PADDING));
+        :first-child {
+            margin-left: auto;
+        }
+        .btn {
+            padding: var(--messagebox-button-topbottom-padding, var(--BUTTON-TOPBOTTOM-PADDING)) var(--messagebox-button-rightleft-padding, var(--BUTTON-RIGHTLEFT-PADDING));
+        }
+    }
+}

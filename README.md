@@ -105,7 +105,7 @@ function createTag(tag, attributes, classes, content) {
 ![](images/ButtonClick.png)
 
 ## Custom Styling
-Use the "classname" defined for the buttons to write CSS into the stylesheet and style the buttons as you see fit. 
+Use the "classname" defined for the buttons to write CSS into the stylesheet and style the buttons as you see fit. Check out the Stylesheet in the example application for some ideas. 
 
 ## Custom Event Handler
 When a button is clicked, the popup closes and the custom event handler script below is called. Do any processing you need to do in this script

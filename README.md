@@ -1,6 +1,6 @@
 # Message Box
 
-The built-in Stadium Message Box action supports the display of simple text and provides a set number of button pairs. Sometimes we may want to provide more options for our users. This can be achieved by creating a custom message box using a [popup](https://github.com/stadium-software/popups) or by using this module. 
+The built-in Stadium Message Box action supports the display of simple text and provides a set number of button pairs. Sometimes we may want to provide more options for our users. 
 
 ![](images/ModuleExperience.gif)
 

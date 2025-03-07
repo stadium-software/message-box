@@ -5,7 +5,7 @@ The built-in Stadium Message Box action supports the display of simple text and 
 ![](images/ModuleExperience.gif)
 
 # Version
-Initial 1.0
+2.0
 
 # Setup
 
@@ -19,9 +19,9 @@ Initial 1.0
    2. Message
    3. Title
 3. Drag a *JavaScript* action into the script
-4. Add the Javascript below into the JavaScript code property
+4. Add the Javascript below unchanged into the JavaScript code property
 ```javascript
-/* Stadium Script v1.0 https://github.com/stadium-software/message-box */
+/* Stadium Script v2.0 https://github.com/stadium-software/message-box */
 let arrButtons = ~.Parameters.Input.Buttons;
 let message = ~.Parameters.Input.Message;
 let title = ~.Parameters.Input.Title;
@@ -32,25 +32,9 @@ let returnScript = (e) => {
 };
 setup();
 function setup() {
-    let container = document.createElement("div");
-    container.classList.add("stadium-messagebox");
+    let fragment = document.createDocumentFragment();
 
-    let overlay = document.createElement("div");
-    overlay.classList.add("overlay");
-
-    let messageBoxTitle = document.createElement("div");
-    messageBoxTitle.classList.add("message-box-header");
-    messageBoxTitle.innerHTML = title;
-
-    let messageBox = document.createElement("div");
-    messageBox.classList.add("message-box");
-
-    let contentBox = document.createElement("div");
-    contentBox.classList.add("content-box");
-    contentBox.innerHTML = message;
-
-    let buttonBox = document.createElement("div");
-    buttonBox.classList.add("button-box");
+    let buttonContainer = createTag("div", [], [], "");
     for (let i = 0; i < arrButtons.length; i++) {
         let button = document.createElement("button");
         button.classList.add("btn", "btn-lg", "btn-default");
@@ -58,15 +42,42 @@ function setup() {
         button.textContent = arrButtons[i].text;
         button.setAttribute("returnValue", arrButtons[i].return);
         button.addEventListener("click", returnScript, false);
-        buttonBox.appendChild(button);
+        buttonContainer.appendChild(button);
     }
-    if (title) messageBox.appendChild(messageBoxTitle);
-    messageBox.appendChild(contentBox);
-    messageBox.appendChild(buttonBox);
-    container.appendChild(overlay);
-    container.appendChild(messageBox);
-    let app = document.getElementById("app");
-    app.appendChild(container);
+    
+    let modalContainer = createTag("div", [], ["modal-container", "stadium-messagebox"], "");
+    fragment.appendChild(modalContainer);
+    let displayMessageBoxModal = createTag("div", [{"id":"display-message-box-modal"}], ["modal"], "");
+    modalContainer.appendChild(displayMessageBoxModal);
+    let modalDialog = createTag("div", [], ["modal-dialog"], "");
+    displayMessageBoxModal.appendChild(modalDialog);
+    let modalContent = createTag("div", [], ["modal-content"], "");
+    modalDialog.appendChild(modalContent);
+
+    let modalHeader = createTag("div", [], ["modal-header"], title);
+    modalContent.appendChild(modalHeader);
+    let modalBody = createTag("div", [], ["modal-body"], message);
+    modalContent.appendChild(modalBody);
+    let modalFooter = createTag("div", [], ["modal-footer"], "");
+    modalFooter.appendChild(buttonContainer); 
+    modalContent.appendChild(modalFooter);
+
+    let modalBackdrop = createTag("div", [], ["modal-backdrop"], "");
+    modalContainer.appendChild(modalBackdrop);
+
+    let app = document.getElementById("modal-target");
+    app.appendChild(fragment);
+}
+function createTag(tag, attributes, classes, content) {
+    let element = document.createElement(tag);
+    for (let i = 0; i < attributes.length; i++) {
+        element.setAttribute(Object.keys(attributes[i])[0], Object.values(attributes[i])[0]);
+    }
+    for (let i=0;i<classes.length;i++) {
+        element.classList.add(classes[i]);
+    }
+    if (content) element.innerHTML = content;
+    return element;
 }
 ```
 
@@ -92,6 +103,9 @@ function setup() {
    2. Message: The HTML or text you wish to display in the message box
    3. Title: A title for the MessageBox
 
+## Custom Styling
+Use the "classname" defined for the buttons to write CSS into the stylesheet and style the buttons as you see fit. 
+
 ## Custom Event Handler
 When a button is clicked, the popup closes and the custom event handler script below is called. Do any processing you need to do in this script
 
@@ -99,25 +113,6 @@ When a button is clicked, the popup closes and the custom event handler script b
 2. Add the input parameters below to the script
    1. Result
 3. Drag a *Decision* into the "MessageBoxClickEventHandler" and use the "Result" input parameter to check which button was clicked
-
-## CSS
-The CSS below is required for the correct functioning of the module. Some elements can be [customised](#customising-css) using a variables CSS file. 
-
-1. Create a folder called "CSS" inside of your Embedded Files in your application
-2. Drag the two CSS files from this repo [*stadium-messagebox-variables.css*](stadium-messagebox-variables.css) and [*stadium-messagebox.css*](stadium-messagebox.css) into that folder
-3. Paste the link tags below into the *head* property of your application
-```html
-<link rel="stylesheet" href="{EmbeddedFiles}/CSS/stadium-messagebox.css">
-<link rel="stylesheet" href="{EmbeddedFiles}/CSS/stadium-messagebox-variables.css">
-``` 
-
-### Customising CSS
-1. Open the CSS file called [*stadium-messagebox-variables.css*](stadium-messagebox-variables.css) from this repo
-2. Adjust the variables in the *:root* element as you see fit
-3. Overwrite the file in the CSS folder of your application with the customised file
-
-### CSS Upgrading
-To upgrade the CSS in this module, follow the [steps outlined in this repo](https://github.com/stadium-software/samples-upgrading)
 
 ## Working with Stadium Repos
 Stadium Repos are not static. They change as additional features are added and bugs are fixed. Using the right method to work with Stadium Repos allows for upgrading them in a controlled manner. How to use and update application repos is described here 

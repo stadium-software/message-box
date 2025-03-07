@@ -113,6 +113,8 @@ When a button is clicked, the popup closes and the custom event handler script b
    1. Result
 3. Drag a *Decision* into the "MessageBoxClickEventHandler" and use the "Result" input parameter to check which button was clicked
 
+![](images/Explorer.png)
+
 ## Working with Stadium Repos
 Stadium Repos are not static. They change as additional features are added and bugs are fixed. Using the right method to work with Stadium Repos allows for upgrading them in a controlled manner. How to use and update application repos is described here 
 

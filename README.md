@@ -9,9 +9,6 @@ The built-in Stadium Message Box action supports the display of simple text and 
 
 # Setup
 
-## Application Setup
-1. Check the *Enable Style Sheet* checkbox in the application properties
-
 ## Global Script
 1. Create a Global Script called "MessageBox"
 2. Add the input parameters below to the Global Script
@@ -86,6 +83,8 @@ function createTag(tag, attributes, classes, content) {
    1. text (any)
    2. return (any)
    3. classname (any)
+
+![](images/MessageBoxType.png)
 
 ## Page
 1. Drag a *Button* control to the page

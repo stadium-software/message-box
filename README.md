@@ -102,6 +102,8 @@ function createTag(tag, attributes, classes, content) {
    2. Message: The HTML or text you wish to display in the message box
    3. Title: A title for the MessageBox
 
+![](images/ButtonClick.png)
+
 ## Custom Styling
 Use the "classname" defined for the buttons to write CSS into the stylesheet and style the buttons as you see fit. 
 
